@@ -1,47 +1,52 @@
-const { gql } = require("apollo-server-express");
+const { gql } = require('apollo-server-express');
 
+// Define the GraphQL schema using SDL
 const typeDefs = gql`
-  type Book {
-    bookId: ID!
-    title: String!
-    authors: [String]!
-    description: String
-    image: String
-    link: String
-  }
+    type Book {
+        _id: ID
+        authors: [String]
+        description: String
+        bookId: String
+        image: String
+        forSale: String
+        link: String
+        title: String
+    }
 
-  input BookInput {
-    bookId: ID!
-    title: String!
-    authors: [String]!
-    description: String
-    image: String
-    link: String
-  }
+    type User {
+        _id: ID
+        username: String
+        email: String
+        bookCount: Int
+        savedBooks: [Book]        
+    }
 
-  type User {
-    id: ID!
-    username: String!
-    email: String!
-    bookCount: Int
-    savedBooks: [Book]
-  }
+    type Query {
+        me: User
+    }
 
-  type Auth {
-    token: ID!
-    user: User
-  }
+    type Auth {
+        token: ID!
+        user: User
+    }
 
-  type Query {
-    me: User
-  }
+    input SavedBookInput {
+        authors: [String]
+        description: String
+        bookId: String
+        image: String
+        forSale: String
+        link: String
+        title: String
+    }
 
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    saveBook(input: BookInput!): User
-    removeBook(bookId: ID!): User
-  }
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
+        saveBook(book: SavedBookInput): User
+        removeBook(bookId: String!): User
+    }
 `;
 
+// Export the typeDefs
 module.exports = typeDefs;
