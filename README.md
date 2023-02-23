@@ -56,3 +56,7 @@ If you would like to contribute to is it Book?, please submit a pull request wit
 
 # License
 Is it Book? is Licensed under the MIT license.
+
+# References
+
+`https://github.com/jcgom3/Challenge-21-MERN-Book-Search-Engine`
