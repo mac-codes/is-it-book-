@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/react-hooks';
-import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { LOGIN_USER } from '../utils/mutations';
+
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated, setValidated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
-  const [loginUser, { loading }] = useMutation(LOGIN_USER);
+    const [showAlert, setShowAlert] = useState(false);
+    const [validated, setValidated] = useState(false);
+  
+    const [loginUser, { loading }] = useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -43,7 +45,7 @@ const LoginForm = () => {
   return (
     <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
       <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-        Something went wrong with your login credentials!
+        There is something wrong with your username or password!
       </Alert>
       <Form.Group>
         <Form.Label>Email</Form.Label>
@@ -55,7 +57,7 @@ const LoginForm = () => {
           onChange={handleInputChange}
           required
         />
-        <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+        <Form.Control.Feedback type='invalid'>Your Email is required!</Form.Control.Feedback>
       </Form.Group>
 
       <Form.Group>
