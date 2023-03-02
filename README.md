@@ -2,7 +2,9 @@
 
 Is It Book? is a web application built using MERN stack and GraphQL that allows users to search and save books. The application fetches data from Google Books API and allows users to save the books they like in their personal reading list.
 
-** I have infact locked myself out of heroku due to two-factor authentication errors. I am infact furious at myself. please follow download instructions to see app 😭
+# Deployed app
+
+https://search-and-love-books.herokuapp.com/
 
 # Table of Contents
 
